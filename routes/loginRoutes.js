@@ -1,18 +1,15 @@
 //Require Modules
-const express=require('express');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
 
 //Controllers
-const adminController=require('../Controller/loginAdmin');
-const userController=require('../Controller/loginUser');
+const loginController = require('../Controller/loginController');
 
 //Handle requests
-router.get('/admin-login',adminController.login);
-router.get('/user-login',userController.login);
-router.get('/admin-logout',adminController.logout);
-router.get('/user-logout',userController.logout);
-router.get('/',(req,res)=>{res.end('Login test')})
+router.get('/room-login', loginController.login);
+// router.get('/room-logout', loginController.logout);//Not required while using jwt
+router.get('/', (req, res) => { res.end('Login test') })
 
 
 //exports
-module.exports=router;
+module.exports = router;

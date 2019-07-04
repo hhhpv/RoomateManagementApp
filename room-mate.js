@@ -12,6 +12,7 @@ const errorRoute = require('./routes/errorRoutes');
 const polls = require('./routes/pollingRoutes');
 const profileRoute = require('./routes/profileRoutes');
 const signUp = require('./routes/signUp');
+let auth = require('./routes/authorize');
 
 //Connect to database before listening on routes
 mongoose.connect("mongodb://127.0.0.1:27017/room-mate", { useNewUrlParser: false }).then(
@@ -20,7 +21,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/room-mate", { useNewUrlParser: false
         app.use(parser.json());
         app.use('/signUp', signUp);
         app.use('/login', loginRoute);
-        app.use('/polls', polls);
+        app.use('/polls', auth, polls);
         app.use('/profile', profileRoute);
         app.use(errorRoute.getError);
 

@@ -32,7 +32,7 @@ exports.admin = (req, res, next) => {
         } else {
             res.status(201).json({ result: "failure", data: { message: "User already registered!" } });
         }
-    })
+    });
 }
 
 exports.user = (req, res, next) => {
