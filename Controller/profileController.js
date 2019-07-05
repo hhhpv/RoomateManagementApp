@@ -123,7 +123,24 @@ exports.view_profile = (req, res, next) => {
 }
 
 exports.view_monthly_expense = (req, res, next) => {
-
+    jwt.verify(req.body.token, key, (err, decoded) => {
+        if (err) {
+            res.status(201).json({ result: "failure", data: { message: "Unauthorized Access!" } });
+        }
+        else if (req.body.username === decoded.username && req.body.email === decoded.email) {
+            expense.find({ groupId: req.body.groupId, month: req.body.month, year: req.body.year }).then((result) => {
+                if (result.length == 0) {
+                    res.status(201).json({ result: "failure", data: { message: "Enter valid query!" } });
+                } else {
+                    res.status(201).json({ result: "success", data: result });
+                }
+            }).catch((err) => {
+                res.status(201).json({ result: "failure", data: { message: "Could not retrieve. Please try later." } });
+            })
+        } else {
+            res.status(201).json({ result: "failure", data: { message: "Invalid credentials" } })
+        }
+    });
 }
 
 exports.view_polls = (req, res, next) => {
