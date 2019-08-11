@@ -21,7 +21,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/room-mate", { useNewUrlParser: false
         app.use(parser.json());
         app.use('/signUp', signUp);
         app.use('/login', loginRoute);
-        app.use('/polls', auth, polls);
+        app.use('/polls', auth, polls); //future scope
         app.use('/profile', profileRoute);
         app.use(errorRoute.getError);
 

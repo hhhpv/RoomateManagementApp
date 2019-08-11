@@ -16,7 +16,7 @@ exports.login = (req, res, next) => {
         } else {
             if (bcrypt.compareSync(password, result.password)) {
                 var token = jwt.sign({ username: username, email: email }, key, { expiresIn: '30 days' });
-                res.status(201).json({ result: "success", data: { message: "Login Successful", token: token } });
+                res.status(201).json({ result: "success", data: { message: "Login Successful", token: token, groupId:result.groupId } });
             }
             else {
                 res.status(201).json({ result: "failure", data: { message: "Invalid Password!" } });

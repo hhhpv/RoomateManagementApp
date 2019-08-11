@@ -6,9 +6,9 @@ const router = express.Router();
 const loginController = require('../Controller/loginController');
 
 //Handle requests
-router.get('/room-login', loginController.login);
+router.post('/room-login', loginController.login);
 // router.get('/room-logout', loginController.logout);//Not required while using jwt
-router.get('/', (req, res) => { res.end('Login test') })
+router.post('/', (req, res) => { res.end('Login test') })
 
 
 //exports

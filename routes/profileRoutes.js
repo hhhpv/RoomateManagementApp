@@ -5,15 +5,16 @@ const profileController = require('../Controller/profileController');
 const auth = require('../routes/authorize');
 
 //Handle requests
-router.get('/get-bill-category', profileController.get_bill_category);
+router.post('/get-bill-category', profileController.get_bill_category);
 //router.post('/add-bill-category');    //future reference
-router.get('/add-shared-expense', profileController.add_shared_expense);
-router.get('/delete-shared-expense', profileController.delete_shared_expense);
-router.get('/view/profile', profileController.view_profile);
-router.get('/view/monthly-expense', profileController.view_monthly_expense);
-router.get('/view/polls', profileController.view_polls);
-router.get('/approve-polls', profileController.approve_polls);
-router.get('/', auth, (req, res) => { res.end('profile test') });
+router.post('/get-room-mates',profileController.get_room_mates);
+router.post('/add-shared-expense', profileController.add_shared_expense);
+router.post('/delete-shared-expense', profileController.delete_shared_expense);
+router.post('/view/profile', profileController.view_profile);
+router.post('/view/monthly-expense', profileController.view_monthly_expense);
+router.post('/view/polls', profileController.view_polls);   //future scope
+router.post('/approve-polls', profileController.approve_polls); //future scope
+router.post('/', auth, (req, res) => { res.end('profile test') });
 
 
 //exports

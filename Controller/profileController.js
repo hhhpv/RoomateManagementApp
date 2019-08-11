@@ -143,6 +143,23 @@ exports.view_monthly_expense = (req, res, next) => {
     });
 }
 
+exports.get_room_mates=(req, res, next) => {
+    jwt.verify(req.body.token, key, (err, decoded) => {
+        if (err) {
+            res.status(201).json({ result: "failure", data: { message: "Unauthorized Access!" } });
+        }
+        else if (req.body.username === decoded.username && req.body.email === decoded.email) {
+            user.find({ groupId:req.body.groupId }).then((result) => {
+                res.status(200).json({ result: "success", data: { room_mates:result } })
+            }).catch((err) => {
+                res.status(201).json({ result: "failure", data: { message: "Could not load details.Try after some time." } })
+            })
+        } else {
+            res.status(201).json({ result: "failure", data: { message: "Invalid credentials" } })
+        }
+    });
+}
+
 exports.view_polls = (req, res, next) => {
 
 }
