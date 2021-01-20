@@ -1,6 +1,6 @@
 # RoomateManagementApp
 
-## Note: This is the back-end part of the project check out this repo for the mobile application part
+## Note: This is the back-end part of the project check out [this repo](https://github.com/hhhpv/RoommateManagementApplication) for the mobile application part
 
 ### Important Info:
 * **The rest APIs are written in javascript using nodeJS framework. Please check out the controllers for internal implementation**
